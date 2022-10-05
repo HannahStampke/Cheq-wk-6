@@ -1,4 +1,4 @@
-var apiKey = "74b589766e2c1c1f69016c5e5740ff80";
+var apiKey = '9d71efd65a10549ff0ad94a2255282d3';
 
 var searchField = document.getElementById("search-field");
 var searchBtn = document.getElementById("search-btn");
@@ -32,10 +32,23 @@ searchBtn.addEventListener('click', function() {
     event.preventDefault();
 })
 
+// Function to get the searched city into the API call
+function getCity(city) {
+    var cityName = city;
+    var requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=9d71efd65a10549ff0ad94a2255282d3";
+    fetch(requestURL)
+        .then(function(response) {
+            response.json().then(function(data) {
+                displayCityData(data);
+                saveCityName(cityName);
+            })
+        });
+};
+
 // Connect search to API
 function displayCityData(data) {
     var searchCityName = data.name;
-    var cityTemperature = data.main.temperature;
+    var cityTemperature = data.main.temp;
     var cityWindSpeed = data.wind.speed;
     var cityHumidity = data.main.humidity;
     var longitude = data.coord.lon;
