@@ -60,3 +60,49 @@ function getFiveDayCity(latitude, longitude) {
             })
         });
 }
+
+// Five day display
+function getFiveDayForecast(data) {
+    console.log(data)
+    console.log(data.daily[1])
+
+    var futureForecast = document.getElementById("future-forecast");
+
+    for (let i = 1; i < 6; i++) {
+        var averageTemperature = data.daily[i].temp.day;
+        var averageWindSpeed = data.daily[i].wind_speed;
+        var averageHumidity = data.daily[i].humidity;
+
+        var date = moment().add(+i, 'days').format('DD-MM-YYYY');
+        console.log(date)
+
+        var dailyWeather = document.createElement("div");
+        dailyWeather.classList.add("day-card");
+        futureForecast.append(dailyWeather);
+
+        var todayWeather = document.createElement("h3");
+        todayWeather.setAttribute("id", "futureDate");
+        dailyWeather.append(todayWeather)
+        todayWeather.innerHTML = date;
+
+        var todayWeatherIcon = document.createElement("img");
+        todayWeatherIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png");
+        dailyWeather.append(dayWeatherIcon);
+
+        var todayTemperature = document.createElement("p");
+        todayTemperature.setAttribute("id", "futureTemperature");
+        dailyWeather.append(todayTemperature);
+        todayTemperature.innerHTML = "Temperature: " + averageTemperature + "°C";
+
+        var todayWindSpeed = document.createElement("p");
+        todayWindSpeed.setAttribute("id", "futureWind");
+        dailyWeather.append(todayWindSpeed);
+        todayWindSpeed.innerHTML = "Wind Speed: " + averageWindSpeed + "km/h";
+
+        var todayHumidity = document.createElement("p");
+        todayHumidity.setAttribute("id", "futureHumidity");
+        dailyWeather.append(todayHumidity);
+        todayHumidity.innerHTML = "Humidity: " + averageHumidity + "%";
+    }
+}
+
