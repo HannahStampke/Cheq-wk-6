@@ -15,10 +15,6 @@ SO THAT I can plan a trip accordingly
 
 Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
 
-## Issues
-
-The styling seems to not work once deployed to GitHub, even though the code is the same.
-
 # Table of Contents
 
 - [Usage](#usage)
