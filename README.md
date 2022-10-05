@@ -1,23 +1,19 @@
 # Cheq Weather Generator
 
-### Live URL: https://hannahstampke.github.io/code-quiz/
+### Live URL: https://hannahstampke.github.io/Cheq-wk-6/
 ### Website Screenshots:
-![Main page of Code Quiz](./assets/images/Main%20Page.png)
-
-![Quiz page of Code Quiz](./assets/images/Quiz.png)
-
-![Score page of Quiz Code](./assets/images/Score.png)
+![Main page of Cheq](./assets/Cheq%20Weather.png)
 
 ## User Story 
 ```md
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+AS A traveler
+I WANT to see the weather outlook for multiple cities
+SO THAT I can plan a trip accordingly
 ```
 
 ## Description
 
-Code Quiz is a multiple choice quiz that allows the user to test their knowledge of basic code languages. Get competitive and keep track of the High Score section, or just enjoy the race against the clock!
+Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
 
 ## Issues
 
@@ -36,9 +32,7 @@ The styling seems to not work once deployed to GitHub, even though the code is t
 
 Steps to access and use the Code Quiz
 
-- Navigate to the Quiz Code URL (https://hannahstampke.github.io/code-quiz/).
-- Once you have landed on the main page, click the Start! button to begin the quiz.
-- Follow the prompts.
+- Navigate to the applications URL and follow the prompts.
 
 
 # Applications
@@ -47,6 +41,7 @@ Steps to access and use the Code Quiz
 - CSS
 - Bootstrap
 - GitHub
+- OpenWeather API
 
 
 # Questions 
