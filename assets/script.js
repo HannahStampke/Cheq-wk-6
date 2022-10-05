@@ -12,6 +12,11 @@ var uvIndex = document.getElementById("uv-index");
 var windSpeed = document.getElementById("wind-speed");
 var humidity = document.getElementById("humidity");
 
+var futureDate = document.getElementById("future-date");
+var futureTemperature = document.getElementById("future-temperature");
+var futureWindSpeed = document.getElementById("future-wind-speed");
+var futureHumidity = document.getElementById("future-humidity");
+
 
 
 var todaysDate = moment().format("MMM Do, YYYY");
@@ -95,7 +100,7 @@ function getFiveDayForecast(data) {
         todayTemperature.innerHTML = "Temperature: " + averageTemperature + "°C";
 
         var todayWindSpeed = document.createElement("p");
-        todayWindSpeed.setAttribute("id", "futureWind");
+        todayWindSpeed.setAttribute("id", "futureWindSpeed");
         dailyWeather.append(todayWindSpeed);
         todayWindSpeed.innerHTML = "Wind Speed: " + averageWindSpeed + "km/h";
 
@@ -106,3 +111,52 @@ function getFiveDayForecast(data) {
     }
 }
 
+// UV index colour
+function getUVIndex(latitude, longitude) {
+    let uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + latitude + "&lon=" + longitude;
+    fetch(uvURL)
+        .then(function(index) {
+            index.json().then(function(data) {
+
+                if (data.value < 4) {
+                    currentUVIndex.setAttribute("id", "green-UV");
+                } else if (data.value < 8) {
+                    currentUVIndex.setAttribute("id", "yellow-UV");
+                } else {
+                    currentUVIndex.setAttribute("id", "red-UV");
+                }
+
+                currentUVIndex.innerHTML = data.value;
+            })
+        })
+}
+
+// Save to local storage
+function saveCity(cityName) {
+    var localStoreCity = localStorage.getItem("cityNames");
+
+    var arrayCity;
+    if (!localStoreCity) {
+        arrayCity = [];
+    };
+
+    arrayCity.push(cityName);
+
+    var cityString = JSON.stringify(arrayCity)
+    window.localStorage.setItem("cityNames", cityString);
+    if (arrayCity.length === 0) {
+        console.log("Search a city to start!")
+        searchHistory.innerHTML = ""
+    } else {
+        for (var i = 0; i < arrayCity.length; i++) {
+            var historyBtn = document.createElement("button");
+            historyBtn.classList.add("history-city-btn")
+            historyBtn.value = arrayCity;
+            historyBtn.textContent = arrayCity[i];
+            searchHistory.append(historyBtn);
+            historyBtn.addEventListener("click", function(event) {
+                getCity(event.target.textContent)
+            })
+        }
+    }
+};
